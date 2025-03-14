@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital-Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="clock-container">
+        <div class="clock">
+            <div>
+                <div class="hours" id="hours">00
+                    
+                </div>
+                <span class="time-txts">Hours</span>
+            </div>
+            <div class="period" id="period">AM</div>
+            <span class="colom">:</span>
+            <div>
+                <div class="minutes" id="minute">00</div>
+                <span class="time-txts">Minutes</span>
+            </div>
+            <span class="colom">:</span>
+            <div>
+                <div class="seconds" id="secconds">00</div>
+                <span class="time-txts">Seconds</span>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function clock(){
+            const hours = document.querySelector("#hours");
+            const minutes = document.querySelector("#minute");
+            const seconds = document.querySelector("#secconds");
+            const period = document.querySelector("#period");
+
+            const date = new Date();
+            let hr = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
+            let ampm;
+
+            function ampmFun(){
+                ampm = hr >= 12 ? 'PM' : 'AM';
+
+                hr = hr % 12;
+                hr = hr ? hr : 12; // the hour '0' should be '12'
+                hr = hr < 10 ? '0' + hr : hr;
+                min = min < 10 ? '0' + min : min;
+                sec = sec < 10 ? '0' + sec : sec;
+            }
+            ampmFun();
+
+            hours.innerHTML = hr;
+            minutes.innerHTML = min;
+            seconds.innerHTML = sec;
+            period.innerHTML = ampm;
+        }
+
+        const interval = setInterval(clock, 1000);
+
+        console.log(new Date().toTimeString());
+        const showTimeOnConsol = setInterval(() => {
+            console.log(new Date().toTimeString());
+        }, 1200000); // 20 minutes
+    </script>
+
+</body>
+</html>
