@@ -58,6 +58,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    transition: all 1s ease-in-out;
 }
 
 .clock > div {
@@ -108,15 +109,16 @@ body {
 }
 
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 910px) {
+
     .clock {
-        width: 160px;
+        width: 40vw;
         flex-direction: column;
     }
 
     .clock > div {
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
 
         &:first-child {
             margin-bottom: 8px;
@@ -131,4 +133,15 @@ body {
     .colom {
         display: none;
     }
+
+    
+    @media screen and (max-width: 620px) {
+
+       .clock {
+            width: 160px;
+            flex-direction: column;
+        }
+
+    }
+
 }
